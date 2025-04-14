@@ -31,11 +31,11 @@ receipt_template = """
             margin: 10mm;  /* Page margins */
         }
         .container {
-            width: 210mm;
+            width: 210mm !important; /* Added !important */
             min-height: 297mm;
-            margin: 10mm 20mm; /* Top/Bottom 10mm, Left/Right 20mm */
+            margin: 10mm 20mm !important; /* Added !important */
             border: 2px solid #ccc !important;
-            padding: 20px;
+            padding: 0mm; /* Changed to 0mm */
             box-sizing: border-box;
             position: relative;
             page-break-before: always;
@@ -94,7 +94,7 @@ receipt_template = """
             <p>(2)Cheque No. and Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <p>(3) Pay for ECS Rs.{{ receipt.amount }}/- (Rupees <span class="amount-words">{{ receipt.amount_words }} Only</span>)</p>
             <p>(4) Paid by me</p>
-            <p>(5) Received from The Executive Engineer PWD Electric Division, Udaipur the sum of Rs. {{ receipt.amount_words }} Only</span>)</p>
+            <p>(5) Received from The Executive Engineer PWD Electric Division, Udaipur the sum of Rs. {{ receipt.amount }}/- (Rupees <span class="amount-words">{{ receipt.amount_words }} Only</span>)</p>
             <p> Name of work for which payment is made: <span id="work-name" class="input-field">{{ receipt.work }}</span></p>
             <p> Chargeable to Head:- 8443 [EMD- Refund] </p>
             <table class="signature-area">
@@ -132,6 +132,9 @@ receipt_template = """
             </div>
         </div>
         <div class="bottom-left-box">
+                <p></p>
+                <p></p>
+                <p></p>
             <p> Passed for Rs. {{ receipt.amount }}</p>
             <p> In Words Rupees: {{ receipt.amount_words }} Only</p>
             <p> Chargeable to Head:- 8443 [EMD- Refund]</p>
