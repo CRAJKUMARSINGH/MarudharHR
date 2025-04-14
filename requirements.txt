@@ -1,0 +1,10 @@
+flask
+pandas
+jinja2
+num2words
+openpyxl
+gunicorn
+pdfkit
+
+
+
