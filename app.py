@@ -1,23 +1,3 @@
-from flask import Flask, render_template, request, send_file
-import pandas as pd
-from jinja2 import Template
-import pdfkit
-import os
-from num2words import num2words
-
-app = Flask(__name__)
-
-# Configure wkhtmltopdf path (OS-aware)
-import os
-
-if os.name == 'nt':  # Windows
-    wkhtmltopdf_path = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe'  # Adjust if needed
-else:  # Linux or macOS
-    wkhtmltopdf_path = '/usr/bin/wkhtmltopdf'  # Or the path from 'which wkhtmltopdf'
-
-config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
-
-# Improved HTML template for the receipt
 receipt_template = """
 <!DOCTYPE html>
 <html lang="en">
@@ -28,12 +8,12 @@ receipt_template = """
     <style>
         body { font-family: sans-serif; margin: 0; }
         @page {
-            margin: 10mm;  /* Retyped this line */
+            margin: 10mm;  /* Page margins */
         }
         .container {
             width: 210mm;
             min-height: 297mm;
-            margin: 10mm auto;
+            margin: 10mm 20mm; /* Top/Bottom 10mm, Left/Right 20mm */
             border: 2px solid #ccc !important;
             padding: 20px;
             box-sizing: border-box;
@@ -94,7 +74,7 @@ receipt_template = """
             <p>(2)Cheque No. and Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <p>(3) Pay for ECS Rs.{{ receipt.amount }}/- (Rupees <span class="amount-words">{{ receipt.amount_words }} Only</span>)</p>
             <p>(4) Paid by me</p>
-            <p>(5) Received from The Executive Engineer PWD Electric Division, Udaipur the sum of Rs. {{ receipt.amount }}/- (Rupees <span class="amount-words">{{ receipt.amount_words }} Only</span>)</p>
+            <p>(5) Received from The Executive Engineer PWD Electric Division, Udaipur the sum of Rs. {{ receipt.amount_words }} Only</span>)</p>
             <p> Name of work for which payment is made: <span id="work-name" class="input-field">{{ receipt.work }}</span></p>
             <p> Chargeable to Head:- 8443 [EMD- Refund] </p>
             <table class="signature-area">
