@@ -18,22 +18,23 @@ else:  # Linux or macOS
 config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
 
 # Improved HTML template for the receipt
+receipt_template = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=210mm, height=297mm">
+    <meta name="viewport" content="width=210mm, height: 297mm">
     <title>Hand Receipt (RPWA 28)</title>
     <style>
         body { font-family: sans-serif; margin: 0; }
         @page {
-            margin: 10mm; 
+            margin: 10mm;  /* Retyped this line */
         }
         .container {
             width: 210mm;
             min-height: 297mm;
             margin: 10mm auto;
-            border: 2px solid #ccc;
+            border: 2px solid #ccc !important;
             padding: 20px;
             box-sizing: border-box;
             position: relative;
@@ -46,9 +47,18 @@ config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
         .details { margin-bottom: 1px; }
         .amount-words { font-style: italic; }
         .signature-area { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .signature-area td, .signature-area th { border: 1px solid #ccc; padding: 5px; text-align: left; }
+        .signature-area td, .signature-area th {
+            border: 1px solid #ccc !important;
+            padding: 5px;
+            text-align: left;
+        }
         .offices { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .offices td, .offices th { border: 1px solid black; padding: 5px; text-align: left; word-wrap: break-word; }
+        .offices td, .offices th {
+            border: 1px solid black !important;
+            padding: 5px;
+            text-align: left;
+            word-wrap: break-word;
+        }
         .input-field { border-bottom: 1px dotted #ccc; padding: 3px; width: calc(100% - 10px); display: inline-block; }
         .seal-container { position: absolute; left: 10mm; bottom: 10mm; width: 40mm; height: 25mm; z-index: 10; }
         .seal { max-width: 100%; max-height: 100%; text-align: center; line-height: 40mm; color: blue; display: flex; justify-content: space-around; align-items: center; }
