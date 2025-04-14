@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hand Receipt Generator (RPWA 28)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .upload-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="file"] {
+            margin: 15px 0;
+        }
+        button {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p.note {
+            font-size: 14px;
+            color: #555;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-box">
+        <h2>Upload Excel File for Hand Receipts</h2>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".xlsx" required><br>
+            <button type="submit">Generate PDF</button>
+        </form>
+        <p class="note">Make sure your Excel file has columns:<br><strong>Payee Name, Amount, Work</strong></p>
+    </div>
+</body>
+</html>
