@@ -27,7 +27,7 @@ config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
     <style>
         body { font-family: sans-serif; margin: 0; }
         @page {
-            margin: 10mm; /* Added page margins */
+            margin: 10mm; 
         }
         .container {
             width: 210mm;
