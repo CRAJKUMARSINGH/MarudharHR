@@ -1,3 +1,23 @@
+from flask import Flask, render_template, request, send_file
+import pandas as pd
+from jinja2 import Template
+import pdfkit
+import os
+from num2words import num2words
+
+app = Flask(__name__)
+
+# Configure wkhtmltopdf path (OS-aware)
+import os
+
+if os.name == 'nt':  # Windows
+    wkhtmltopdf_path = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe'  # Adjust if needed
+else:  # Linux or macOS
+    wkhtmltopdf_path = '/usr/bin/wkhtmltopdf'  # Or the path from 'which wkhtmltopdf'
+
+config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
+
+# Improved HTML template for the receipt
 receipt_template = """
 <!DOCTYPE html>
 <html lang="en">
