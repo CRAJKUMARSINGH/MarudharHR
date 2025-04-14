@@ -18,15 +18,17 @@ else:  # Linux or macOS
 config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
 
 # Improved HTML template for the receipt
-receipt_template = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=210mm, height: 297mm">
+    <meta name="viewport" content="width=210mm, height=297mm">
     <title>Hand Receipt (RPWA 28)</title>
     <style>
         body { font-family: sans-serif; margin: 0; }
+        @page {
+            margin: 10mm; /* Added page margins */
+        }
         .container {
             width: 210mm;
             min-height: 297mm;
