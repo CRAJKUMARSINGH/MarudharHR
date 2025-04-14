@@ -31,13 +31,9 @@ receipt_template = """
             margin: 10mm;  /* Page margins */
         }
         .container {
-            width: 190mm !important; /* Added !important */
+            width: 210mm !important; /* Added !important */
             min-height: 297mm;
-            margin-left: 20mm;
-            margin-right: 20mm;
-            margin-top: 10mm;
-            margin-bottom: 10mm;
-            
+            margin: 10mm 20mm !important; /* Added !important */
             border: 2px solid #ccc !important;
             padding: 0mm; /* Changed to 0mm */
             box-sizing: border-box;
