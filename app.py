@@ -7,8 +7,14 @@ from num2words import num2words
 
 app = Flask(__name__)
 
-# Configure wkhtmltopdf path
-wkhtmltopdf_path = 'C:/program files/wkhtmltopdf/bin/wkhtmltopdf.exe'
+# Configure wkhtmltopdf path (OS-aware)
+import os
+
+if os.name == 'nt':  # Windows
+    wkhtmltopdf_path = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe'  # Adjust if needed
+else:  # Linux or macOS
+    wkhtmltopdf_path = '/usr/bin/wkhtmltopdf'  # Or the path from 'which wkhtmltopdf'
+
 config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
 
 # Improved HTML template for the receipt
