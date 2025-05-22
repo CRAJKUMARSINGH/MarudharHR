@@ -5,6 +5,7 @@ num2words
 openpyxl
 gunicorn
 pdfkit
+streamlit
 
 
 
